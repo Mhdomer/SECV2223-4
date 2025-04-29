@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive layout for smaller screens */
+@media screen and (max-width: 768px) {
+    body > div[style*="display: flex"] {
+        flex-direction: column !important;
+    }
+
+    .profile-img {
+        margin-top: 10px;
+        align-self: center;
+    }
+
+    body h1 {
+        text-align: center;
+    }
+}
