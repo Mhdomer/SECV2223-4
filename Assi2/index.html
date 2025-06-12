@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding and viewport settings for proper mobile rendering -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Personal website of cybersecurity students Mahmoud Elganzory and Mohamed Omar Makhlouf, showcasing their skills and projects in network security.">
+    <meta name="keywords" content="cybersecurity, network security, web development, student portfolio">
+    <meta name="author" content="Mahmoud Elganzory, Mohamed Omar Makhlouf">
+    <title>Personal Website Landing Page</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Importing Google Fonts - Poppins for modern, clean typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        /* Reset default browser styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Global page layout settings */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            -webkit-text-size-adjust: 100%; /* Prevent auto text size adjust on orientation change */
+        }
+
+        /* Main grid layout structure using CSS Grid */
+        body {
+            min-height: 100vh;
+            display: grid;
+            /* Define grid template areas for semantic layout */
+            grid-template-areas: 
+                "header header header"
+                "leftmenu content rightmenu"
+                "footer footer footer";
+            /* Set column sizes with minmax for responsive behavior */
+            grid-template-columns: minmax(200px, 1fr) minmax(auto, 3fr) minmax(200px, 1fr);
+            grid-template-rows: auto 1fr auto;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #2d3748;
+        }
+
+        /* Header styling */
+        header {
+            grid-area: header;
+            background: #2D1B69; /* Brand color - dark purple */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Logo image styling */
+        header img {
+            max-width: 80px;
+            border-radius: 50%; /* Circular logo */
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header text styling */
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px; /* Improved readability */
+        }
+
+        /* Navigation menu styling (shared between left and right menus) */
+        nav {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(45, 27, 105, 0.1);
+            margin: 20px;
+        }
+
+        /* Navigation list styling */
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        /* Navigation link styling with hover effects */
+        nav ul li a {
+            text-decoration: none;
+            color: #2D1B69;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease; /* Smooth hover transition */
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Add icon spacing */
+        nav ul li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Hover effect for navigation links */
+        nav ul li a:hover {
+            background-color: rgba(45, 27, 105, 0.1);
+            transform: translateX(5px); /* Slight movement on hover */
+        }
+
+        /* Main content area styling */
+        #content {
+            grid-area: content;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(45, 27, 105, 0.1);
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        /* Team section container */
+        #group-section {
+            width: 100%;
+            max-width: 800px; /* Limit width for readability */
+            margin: 0 auto;
+        }
+
+        /* Container for team member cards */
+        .team-members-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+            width: 100%;
+        }
+
+        /* Individual team member card styling */
+        .team-member {
+            flex: 0 1 300px; /* Flex-basis of 300px with shrinking allowed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+        }
+
+        /* Hover effect for team member cards */
+        .team-member:hover {
+            transform: translateY(-5px); /* Slight lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Team member profile image styling */
+        #group-section img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* Circular profile images */
+            margin: 10px;
+            box-shadow: 0 6px 15px rgba(45, 27, 105, 0.2);
+            object-fit: cover; /* Maintain aspect ratio */
+            border: 4px solid #ffffff;
+        }
+
+        /* Team member name styling */
+        .member-name {
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+            color: #2D1B69;
+            font-weight: 600;
+        }
+
+        /* Team member description text styling */
+        .team-member p {
+            color: #4a5568;
+            font-size: 1rem;
+            margin: 10px 0;
+            width: 280px;
+            line-height: 1.6; /* Improved readability */
+            text-align: center;
+        }
+
+        /* Social media links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            color: #2D1B69;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(45, 27, 105, 0.1);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #ffffff;
+            background-color: #2D1B69;
+        }
+
+        /* Section title styling */
+        .section-title {
+            color: #2D1B69;
+            font-size: 1.8rem;
+            margin: 40px 0 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #2D1B69;
+        }
+
+        /* Skills section styling */
+        #skills-section {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+
+        .skill-bar {
+            height: 25px;
+            background-color: #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: #2D1B69;
+            color: white;
+            text-align: right;
+            padding-right: 10px;
+            line-height: 25px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Contact form styling */
+        #contact-section {
+            margin-top: 50px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2D1B69;
+            box-shadow: 0 0 0 3px rgba(45, 27, 105, 0.1);
+        }
+
+        .submit-btn {
+            background-color: #2D1B69;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #3d2a8a;
+        }
+
+        /* Footer styling */
+        footer {
+            grid-area: footer;
+            background-color: #2D1B69;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            width: 100%;
+            margin: 0;
+            grid-column: 1 / -1; /* Span all columns */
+            position: relative;
+            bottom: 0;
+        }
+
+        footer .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .social-links {
+            margin-bottom: 20px;
+        }
+
+        footer .social-icon {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        footer .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 800px) {
+            /* Adjust grid for mobile layout */
+            body {
+                grid-template-areas: 
+                    "header"
+                    "leftmenu"
+                    "content"
+                    "rightmenu"
+                    "footer";
+                grid-template-columns: 1fr;
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* Mobile content adjustments */
+            #content {
+                margin: 10px;
+                width: calc(100% - 20px);
+                padding: 15px;
+            }
+
+            /* Mobile navigation adjustments */
+            nav {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+
+            /* Mobile team members container adjustments */
+            .team-members-container {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* Mobile team member card adjustments */
+            .team-member {
+                width: 100%;
+                padding: 10px;
+            }
+
+            /* Mobile team member description adjustments */
+            .team-member p {
+                width: 100%;
+                max-width: none;
+                padding: 0 10px;
+            }
+
+            /* Mobile menu adjustments */
+            #leftmenu, #rightmenu {
+                width: calc(100% - 20px);
+                margin: 10px;
+            }
+
+            /* Mobile header adjustments */
+            header {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+
+        /* Extra small devices (phones) */
+        @media (max-width: 480px) {
+            /* Set minimum width to prevent layout breaking */
+            body {
+                min-width: 320px;
+            }
+            
+            /* Adjust spacing for very small screens */
+            #content, nav, #leftmenu, #rightmenu {
+                margin: 5px;
+                width: calc(100% - 10px);
+            }
+
+            .team-member {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section: Contains logo and welcome message -->
+    <header>
+        <img src="cyberx.png" alt="CyberX Logo" title="CyberX Brand Logo">
+        <h1>Welcome to Our Personal Website</h1>
+    </header>
+
+    <!-- Left Navigation Menu: Primary navigation links -->
+    <nav id="leftmenu" aria-label="Main navigation">
+        <ul>
+            <li><a href="#about" title="Learn more about us">About Us</a></li>
+            <li><a href="#projects" title="View our projects">Projects</a></li>
+            <li><a href="#contact" title="Get in touch">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section: Team member profiles -->
+    <div id="content">
+        <div id="group-section">
+            <div class="team-members-container">
+                <!-- First Team Member Profile -->
+                <div class="team-member">
+                    <img src="mahmoud.jpg" alt="Mahmoud's Profile Picture" title="Mahmoud Elganzory">
+                    <h3 class="member-name">Mahmoud (A23CS0291)</h3>
+                    <p>I'm Mahmoud Elganzory from Egypt, living in Saudi Arabia and studying Networks & Security. I'm passionate about cybersecurity and AI, driven by a mindset of constant learning, adaptability, and sharing knowledge through projects and collaboration.</p>
+                </div>
+                <!-- Second Team Member Profile -->
+                <div class="team-member">
+                    <img src="omar.jpg" alt="Omar's Profile Picture" title="Mohamed Omar Makhlouf">
+                    <h3 class="member-name">Omar (A23CS4014)</h3>
+                    <p>Hi, I'm Mohamed Omar Makhlouf from Egypt, studying Network Security. I'm passionate about cybersecurity, philosophy, and questioning systems to seek truth and stand by my principles.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Section -->
+        <div id="projects-section">
+            <h2 class="section-title" id="projects">Our Projects</h2>
+            <div class="team-members-container">
+                <!-- Project 1 -->
+                <div class="team-member">
+                    <i class="fas fa-shield-alt" style="font-size: 3rem; color: #2D1B69; margin: 20px 0;"></i>
+                    <h3 class="member-name">Network Security Analysis</h3>
+                    <p>A comprehensive security analysis tool for detecting vulnerabilities in network infrastructure. Implements advanced scanning techniques and provides detailed reports.</p>
+                </div>
+                <!-- Project 2 -->
+                <div class="team-member">
+                    <i class="fas fa-code" style="font-size: 3rem; color: #2D1B69; margin: 20px 0;"></i>
+                    <h3 class="member-name">Web Application Firewall</h3>
+                    <p>Custom web application firewall designed to protect against common web attacks including SQL injection, XSS, and CSRF. Features real-time monitoring and threat detection.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Skills Section -->
+        <div id="skills-section">
+            <h2 class="section-title" id="skills">Our Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Network Security</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;">85%</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;">75%</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Cybersecurity</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;">90%</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Ethical Hacking</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;">80%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div id="contact-section">
+            <h2 class="section-title" id="contact">Contact Us</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Right Navigation Menu: Secondary navigation links -->
+    <nav id="rightmenu" aria-label="Secondary navigation">
+        <ul>
+            <li><a href="#blog" title="Read our blog posts">Blog</a></li>
+            <li><a href="#gallery" title="View our gallery">Gallery</a></li>
+            <li><a href="#resources" title="Access resources">Resources</a></li>
+            <li><a href="#faq" title="Frequently asked questions">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Footer Section: Copyright information -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>© 2025 Our Personal Website. All rights reserved.</p>
+            <p>Created by Mahmoud Elganzory & Mohamed Omar Makhlouf</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Animate skill bars on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate skill bars
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+
+            // Form submission handling
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value;
+                    alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon.`);
+                    contactForm.reset();
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+
+<!--
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Form Validation Lab</title> 
+<style> 
+.error { color: red; } 
+</style> 
+</head> 
+<body> 
+<h2>Registration Form</h2> 
+<form id="myForm" onsubmit="return validateForm()"> 
+<div> 
+<label for="name">Name:</label> 
+<input type="text" id="name"> 
+<span id="nameError" class="error"></span> 
+</div> 
+<div> 
+<label for="email">Email:</label> 
+<input type="text" id="email"> 
+<span id="emailError" class="error"></span> 
+</div> 
+<div> 
+<label for="age">Age:</label> 
+<input type="text" id="age"> 
+<span id="ageError" class="error"></span> 
+</div> 
+<div> 
+<label for="password">Password:</label> 
+<input type="password" id="password"> 
+<span id="passwordError" class="error"></span> 
+</div> 
+<input type="submit" value="Submit"> 
+</form> 
+<script> 
+function validateForm() { 
+// Your validation code here 
+} 
+</script> 
+</body> 
+</html>
+
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form </title>
+<link rel="stylesheet" href="form.css">
+<script src="form.js"></script>
+</head>
+<body>
+
+    <form style="border: 1px solid black;" id="myform" onsubmit="return validateForm()"> 
+        <h1 class="h1"> Registration Form </h1>
+        <label for="Name"> Name </label>
+        <input type="text" id="Name" required name="name"> <br> <br> 
+        <span id="nameError" class="error"> </span>
+        
+
+
+        <label for="Email " > Email </label>
+        <input type="email" id="Email" required name="email"> <br> <br>
+        <span id="emailError" class="error"></span>
+        
+        <label for="age ">Age </label>
+        <input type="number" id="age"  name="age " min="18" max="99" required> <br> <br>
+        <span id="ageError" class="error"></span>
+
+        <label for="password">Password </label>
+        <input type="password" id="password" name="password" pattern="[A-Za-z]{6}" required>
+        <span id="passwordError" class="error"></span> <br><br>
+        
+        <input type="submit" value="submit"> <br> <br> 
+
+        <div id="resultMessage"></div>
+    </form>
+    
+</body>
+</html>

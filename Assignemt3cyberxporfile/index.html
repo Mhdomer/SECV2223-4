@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding and viewport settings for proper mobile rendering -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Personal Website Landing Page</title>
+    <style>
+        /* Importing Google Fonts - Poppins for modern, clean typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        /* Reset default browser styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Global page layout settings */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            -webkit-text-size-adjust: 100%; /* Prevent auto text size adjust on orientation change */
+        }
+
+        /* Main grid layout structure using CSS Grid */
+        body {
+            min-height: 100vh;
+            display: grid;
+            /* Define grid template areas for semantic layout */
+            grid-template-areas: 
+                "header header header"
+                "leftmenu content rightmenu"
+                "footer footer footer";
+            /* Set column sizes with minmax for responsive behavior */
+            grid-template-columns: minmax(200px, 1fr) minmax(auto, 3fr) minmax(200px, 1fr);
+            grid-template-rows: auto 1fr auto;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #2d3748;
+        }
+
+        /* Header styling */
+        header {
+            grid-area: header;
+            background: #2D1B69; /* Brand color - dark purple */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Logo image styling */
+        header img {
+            max-width: 80px;
+            border-radius: 50%; /* Circular logo */
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header text styling */
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px; /* Improved readability */
+        }
+
+        /* Navigation menu styling (shared between left and right menus) */
+        nav {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(45, 27, 105, 0.1);
+            margin: 20px;
+        }
+
+        /* Navigation list styling */
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        /* Navigation link styling with hover effects */
+        nav ul li a {
+            text-decoration: none;
+            color: #2D1B69;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease; /* Smooth hover transition */
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Hover effect for navigation links */
+        nav ul li a:hover {
+            background-color: rgba(45, 27, 105, 0.1);
+            transform: translateX(5px); /* Slight movement on hover */
+        }
+
+        /* Main content area styling */
+        #content {
+            grid-area: content;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(45, 27, 105, 0.1);
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Team section container */
+        #group-section {
+            width: 100%;
+            max-width: 800px; /* Limit width for readability */
+            margin: 0 auto;
+        }
+
+        /* Container for team member cards */
+        .team-members-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+            width: 100%;
+        }
+
+        /* Individual team member card styling */
+        .team-member {
+            flex: 0 1 300px; /* Flex-basis of 300px with shrinking allowed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect for team member cards */
+        .team-member:hover {
+            transform: translateY(-5px); /* Slight lift effect on hover */
+        }
+
+        /* Team member profile image styling */
+        #group-section img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* Circular profile images */
+            margin: 10px;
+            box-shadow: 0 6px 15px rgba(45, 27, 105, 0.2);
+            object-fit: cover; /* Maintain aspect ratio */
+            border: 4px solid #ffffff;
+        }
+
+        /* Team member name styling */
+        .member-name {
+            margin: 20px 0 10px;
+            font-size: 1.4rem;
+            color: #2D1B69;
+            font-weight: 600;
+        }
+
+        /* Team member description text styling */
+        .team-member p {
+            color: #4a5568;
+            font-size: 1rem;
+            margin: 10px 0;
+            width: 280px;
+            line-height: 1.6; /* Improved readability */
+        }
+
+        /* Footer styling */
+        footer {
+            grid-area: footer;
+            background-color: #2D1B69;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+            margin: 0;
+            grid-column: 1 / -1; /* Span all columns */
+            position: relative;
+            bottom: 0;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 800px) {
+            /* Adjust grid for mobile layout */
+            body {
+                grid-template-areas: 
+                    "header"
+                    "leftmenu"
+                    "content"
+                    "rightmenu"
+                    "footer";
+                grid-template-columns: 1fr;
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* Mobile content adjustments */
+            #content {
+                margin: 10px;
+                width: calc(100% - 20px);
+                padding: 15px;
+            }
+
+            /* Mobile navigation adjustments */
+            nav {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+
+            /* Mobile team members container adjustments */
+            .team-members-container {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* Mobile team member card adjustments */
+            .team-member {
+                width: 100%;
+                padding: 10px;
+            }
+
+            /* Mobile team member description adjustments */
+            .team-member p {
+                width: 100%;
+                max-width: none;
+                padding: 0 10px;
+            }
+
+            /* Mobile menu adjustments */
+            #leftmenu, #rightmenu {
+                width: calc(100% - 20px);
+                margin: 10px;
+            }
+
+            /* Mobile header adjustments */
+            header {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+
+        /* Extra small devices (phones) */
+        @media (max-width: 480px) {
+            /* Set minimum width to prevent layout breaking */
+            body {
+                min-width: 320px;
+            }
+            
+            /* Adjust spacing for very small screens */
+            #content, nav, #leftmenu, #rightmenu {
+                margin: 5px;
+                width: calc(100% - 10px);
+            }
+
+            .team-member {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section: Contains logo and welcome message -->
+    <header>
+        <img src="cyberx.png" alt="CyberX Logo" title="CyberX Brand Logo">
+        <h1>Welcome to Our Personal Website</h1>
+    </header>
+
+    <!-- Left Navigation Menu: Primary navigation links -->
+    <nav id="leftmenu" aria-label="Main navigation">
+        <ul>
+            <li><a href="#about" title="Learn more about us">About Us</a></li>
+            <li><a href="#projects" title="View our projects">Projects</a></li>
+            <li><a href="contact.php" title="Get in touch">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section: Team member profiles -->
+    <div id="content">
+        <div id="group-section">
+            <div class="team-members-container">
+                <!-- First Team Member Profile -->
+                <div class="team-member">
+                    <img src="mahmoud.jpg" alt="Mahmoud's Profile Picture" title="Mahmoud Elganzory">
+                    <h3 class="member-name">Mahmoud (A23CS0291)</h3>
+                    <p>I'm Mahmoud Elganzory from Egypt, living in Saudi Arabia and studying Networks & Security. I'm passionate about cybersecurity and AI, driven by a mindset of constant learning, adaptability, and sharing knowledge through projects and collaboration.</p>
+                </div>
+                <!-- Second Team Member Profile -->
+                <div class="team-member">
+                    <img src="omar.jpg" alt="Omar's Profile Picture" title="Mohamed Omar Makhlouf">
+                    <h3 class="member-name">Omar (A23CS4014)</h3>
+                    <p>Hi, I'm Mohamed Omar Makhlouf from Egypt, studying Network Security. I'm passionate about cybersecurity, philosophy, and questioning systems to seek truth and stand by my principles.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Navigation Menu: Secondary navigation links -->
+    <nav id="rightmenu" aria-label="Secondary navigation">
+        <ul>
+            <li><a href="guestbook.php" title="Leave a message">Guestbook</a></li>
+            <li><a href="#gallery" title="View our gallery">Gallery</a></li>
+            <li><a href="admin.php" title="Admin panel">Admin</a></li>
+        </ul>
+    </nav>
+
+    <!-- Footer Section: Copyright information -->
+    <footer>
+        <p>© 2025 Our Personal Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
